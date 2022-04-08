@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Contact List</title>
+    <style>
+      #btn, input{
+        padding:20px;
+      }
+      body {
+        text-align:center;
+        font-family:Arial;
+      }
+      li{
+        list-style:none;
+      }
+      #qwerty{
+        text-align:left;
+        padding-left:200px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Add New Contact</h1>
+    <input class="field" id="name" placeholder="name">
+    <input class="field" id="num" type="number" value="0">
+    <button id="btn" type="button" onclick="j()" placeholder="number">Add</button>
+    <div id="qwerty">
+      <h2 id="names"></h2>
+    </div>
+  </body>
+  <script>
+    let persons = [];
+    
+    function j(){
+      let name = document.getElementById('name').value;
+      let num = document.getElementById('num').value;
+    
+      if(name == '' || null){
+        alert('Name field must not be empty');
+      } else if(num == '' || null || 0){
+        alert('Amount field must not be empty');
+      } 
+       else {
+         persons.push({
+          name:name,
+          num:num
+        });
+      document.getElementById('name').value = null;
+      document.getElementById('num').value = null;
+      }
+         document.getElementById('names').innerHTML = '';
+    
+      z(persons);
+    }
+    
+    function z(persons){
+       persons.map((per) =>{
+         display(per);
+        })
+    }
+    function display(per){
+       document.getElementById('names').innerHTML += '<li>' + per.name + ' ,' + per.num +'</li>';
+    }
+  </script>
+</html>

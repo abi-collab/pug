@@ -1,0 +1,66 @@
+doctype html
+html
+  head
+    title Contact List
+    style.
+      #btn, input{
+        padding:20px;
+      }
+      body {
+        text-align:center;
+        font-family:Arial;
+      }
+      li{
+        list-style:none;
+      }
+      #qwerty{
+        text-align:left;
+        padding-left:200px;
+      }
+  body
+    h1 Add New Contact
+    input#name.field(placeholder='name')
+    input#num.field(type='number', value=0)
+    button#btn(type='button', onclick='j()', placeholder='number' ) Add
+    //- h1#persons
+    div#qwerty
+      h2#names
+      
+
+  script.
+    let persons = [];
+
+    function j(){
+      let name = document.getElementById('name').value;
+      let num = document.getElementById('num').value;
+
+      if(name == '' || null){
+        alert('Name field must not be empty');
+      } else if(num == '' || null || 0){
+        alert('Amount field must not be empty');
+      } 
+       else {
+         persons.push({
+          name:name,
+          num:num
+        });
+      document.getElementById('name').value = null;
+      document.getElementById('num').value = null;
+      }
+         document.getElementById('names').innerHTML = '';
+
+      z(persons);
+    }
+
+    function z(persons){
+       persons.map((per) =>{
+         display(per);
+        })
+    }
+    function display(per){
+       document.getElementById('names').innerHTML += '<li>' + per.name + ' ,' + per.num +'</li>';
+    }
+
+   
+
+
